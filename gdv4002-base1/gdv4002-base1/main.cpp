@@ -29,12 +29,13 @@ int main(void) {
 	//
 	// Setup game scene objects here
 
-	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png");
-	GLuint enemyTexture = loadTexture("Resources\\Textures\\alien_ship.png");
+	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png", TextureProperties::NearestFilterTexture());
+	GLuint asteroidTexture1 = loadTexture("Resources\\Textures\\asteroid_1.png");
+	GLuint enemyTexture = loadTexture("Resources\\Textures\\alien_ship.png", TextureProperties::NearestFilterTexture());
 
-	Player* mainPlayer = new Player(glm::vec2(-1.5f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), playerTexture, 1.0f);
+	Player* mainPlayer = new Player(glm::vec2(-1.5f, 0.0f), 0.0f, glm::vec2(0.25, 0.25), playerTexture, 1.0f);
 
-	Enemy* enemy1 = new Enemy(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(45.0f));
+	Enemy* enemy1 = new Enemy(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.4, 0.4), enemyTexture, 0.0f, glm::radians(45.0f));
 	Enemy* enemy2 = new Enemy(glm::vec2(1.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(90.0f));
 	Enemy* enemy3 = new Enemy(glm::vec2(2.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(60.0f));
 
