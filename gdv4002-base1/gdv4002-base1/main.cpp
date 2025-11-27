@@ -12,11 +12,12 @@ void myKeyboardHandler(GLFWwindow* window, int key, int scancode, int action, in
 
 // Bit flags to track which keys are currently pressed
 std::bitset<5> keys{ 0x0 };
+glm::vec2 gravity = glm::vec2(0.0f, -0.0f);
 
 int main(void) {
 
 	// Initialise the engine (create window, setup OpenGL backend)
-	int initResult = engineInit("GDV4002 - Applied Maths for Games", 1024, 1024);
+	int initResult = engineInit("GDV4002 - Applied Maths for Games", 1024, 1024, 5.0f);
 
 	// If the engine initialisation failed report error and exit
 	if (initResult != 0) {
@@ -31,11 +32,11 @@ int main(void) {
 	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png");
 	GLuint enemyTexture = loadTexture("Resources\\Textures\\alien_ship.png");
 
-	Player* mainPlayer = new Player(glm::vec2(-1.5f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), playerTexture, 1.5f);
+	Player* mainPlayer = new Player(glm::vec2(-1.5f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), playerTexture, 1.0f);
 
-	Enemy* enemy1 = new Enemy(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), enemyTexture, 0.0f, glm::radians(45.0f));
-	Enemy* enemy2 = new Enemy(glm::vec2(1.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), enemyTexture, 0.0f, glm::radians(90.0f));
-	Enemy* enemy3 = new Enemy(glm::vec2(2.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.5), enemyTexture, 0.0f, glm::radians(60.0f));
+	Enemy* enemy1 = new Enemy(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(45.0f));
+	Enemy* enemy2 = new Enemy(glm::vec2(1.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(90.0f));
+	Enemy* enemy3 = new Enemy(glm::vec2(2.0f, 0.0f), 0.0f, glm::vec2(0.5, 0.25), enemyTexture, 0.0f, glm::radians(60.0f));
 
 	addObject("player", mainPlayer);
 
